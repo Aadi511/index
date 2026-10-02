@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aaditya Vijay — AI &amp; Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#10141A; --bg2:#161C24; --ink:#EAEDF1; --muted:#8C99A6;
+  --accent:#E8A23C; --accent2:#5FD9C0; --line:rgba(234,237,241,0.12);
+  --serif:'Fraunces',serif; --sans:'IBM Plex Sans',sans-serif;
+  box-sizing:border-box;
+}
+:root:not([data-theme="light"]){ color-scheme: dark; }
+*{box-sizing:inherit;margin:0;padding:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--sans);
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  line-height:1.65; font-size:16px;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+
+/* nav */
+nav{position:sticky;top:0;background:rgba(16,20,26,0.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;
+  padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;max-width:720px}
+.navname{font-family:var(--serif);font-size:17px;font-weight:500}
+.navlinks{display:flex;gap:20px;font-size:14px}
+.navlinks a{color:var(--muted)}
+.navlinks a:hover{color:var(--ink)}
+
+/* hero */
+header.hero{position:relative;padding:72px 0 56px;overflow:hidden}
+.hero-chart{position:absolute;right:-40px;top:10px;width:300px;height:160px;opacity:0.35;pointer-events:none}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,6vw,50px);line-height:1.1;max-width:9ch}
+.hero .role{color:var(--muted);font-size:17px;margin-top:10px}
+.hero p.bio{margin-top:20px;max-width:56ch;font-size:16px;color:#C7CFD6}
+.hero .links{margin-top:26px;display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+@media (prefers-reduced-motion:no-preference){
+  .hero > *{animation:rise 0.6s ease both}
+  .hero h1{animation-delay:0.02s} .hero .role{animation-delay:0.1s}
+  .hero p.bio{animation-delay:0.18s} .hero .links{animation-delay:0.26s}
+}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+section{padding:40px 0;border-top:1px solid var(--line)}
+section h2{font-family:var(--serif);font-weight:500;font-size:22px;margin-bottom:18px}
+
+/* entries (experience / projects) */
+.entry{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:16px 0}
+.entry + .entry{border-top:1px solid var(--line)}
+.entry time{color:var(--muted);font-size:13px;padding-top:2px}
+.entry .role{font-weight:600;font-size:15.5px}
+.entry .org{color:var(--accent2);font-size:14px;margin-bottom:6px}
+.entry ul{margin-top:8px;padding-left:18px;color:#C7CFD6;font-size:14.5px}
+.entry li + li{margin-top:5px}
+.entry .tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:2px 8px}
+@media (max-width:560px){.entry{grid-template-columns:1fr}.entry time{padding-top:0}}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 32px}
+.skillgroup h3{font-size:13.5px;color:var(--muted);font-weight:500;margin-bottom:6px}
+.skillgroup p{font-size:14.5px;color:#C7CFD6}
+@media (max-width:560px){.skills{grid-template-columns:1fr}}
+
+/* leadership / achievements simple list */
+.plain-list{color:#C7CFD6;font-size:15px}
+.plain-list li{margin-bottom:12px;padding-left:16px;position:relative}
+.plain-list li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--accent);border-radius:50%}
+.plain-list b{color:var(--ink)}
+
+/* contact */
+.contact-row{display:flex;flex-wrap:wrap;gap:28px;margin-top:6px}
+.contact-row a{font-size:15px}
+.contact-row .label{display:block;color:var(--muted);font-size:12px;margin-bottom:2px}
+
+footer{padding:28px 0 48px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="navname">Aaditya Vijay</span>
+    <div class="navlinks">
+      <a href="#experience">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#coursework">ECE</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <svg class="hero-chart" viewBox="0 0 300 160" aria-hidden="true">
+      <polyline points="0,120 30,110 60,122 90,90 120,100 150,60 180,70 210,40 240,48 270,20 300,30" fill="none" stroke="#E8A23C" stroke-width="2"/>
+      <polyline points="0,140 30,135 60,138 90,128 120,130 150,112 180,118 210,98 240,104 270,86 300,92" fill="none" stroke="#5FD9C0" stroke-width="1.5" opacity="0.7"/>
+    </svg>
+    <h1>Aaditya Vijay</h1>
+    <p class="role">B.Tech ECE @ NIT Trichy — AI/ML · Data Analytics · Workflow Automation</p>
+    <p class="bio">I build systems that turn messy data and manual workflows into something that runs on its own — support pipelines powered by retrieval and language models, forecasting models that hold up against real numbers, and the occasional synthetic dataset when the real one doesn't exist yet.</p>
+    <div class="links">
+      <a href="mailto:aadityavijay511@gmail.com">Email</a>
+      <a href="https://github.com/Aadi511">GitHub</a>
+      <a href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <time>May – Jun 2026</time>
+      <div>
+        <div class="role">AI Engineering Intern</div>
+        <div class="org">tag8</div>
+        <ul>
+          <li>Built an end-to-end AI customer support system — OpenAI, retrieval-augmented generation and n8n, wired into Gmail, WATI, Shopify and Zoho.</li>
+          <li>Shipped automated intent classification, product retrieval over a 140+ SKU knowledge base, response generation and ticket escalation.</li>
+          <li>Audited an existing automation workflow and fixed a hardcoded credential, field-mapping errors and unhandled routing branches.</li>
+        </ul>
+        <div class="tags"><span class="tag">OpenAI API</span><span class="tag">RAG</span><span class="tag">n8n</span><span class="tag">Shopify</span><span class="tag">Zoho</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <time>Nov – Dec 2025</time>
+      <div>
+        <div class="role">Research Intern, Image &amp; Signal Processing</div>
+        <div class="org">NIT Trichy</div>
+        <ul>
+          <li>Implemented MUWR-Net for single-image deraining under adverse weather, studying FiLM-based feature modulation and frequency decomposition.</li>
+          <li>Benchmarked restoration quality on Rain100 and SPA datasets using PSNR and SSIM.</li>
+        </ul>
+        <div class="tags"><span class="tag">PyTorch</span><span class="tag">Computer Vision</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="entry">
+      <time>Apr 2026</time>
+      <div>
+        <div class="role">Demand Forecasting &amp; Sales Intelligence</div>
+        <ul>
+          <li>Forecasting pipeline on 16.5K+ sales records with lag and rolling-average features.</li>
+          <li>Compared Moving Average, Linear Regression and Random Forest on MAE, RMSE and R² to pick the best model.</li>
+          <li>Power BI dashboard covering 30+ platforms, 12 genres and multiple regions.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Power BI</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <time>Jun 2026</time>
+      <div>
+        <div class="role">Synthetic Handwritten Medical Document Generator</div>
+        <ul>
+          <li>Generated 10,000+ synthetic handwritten forms with 15+ structured patient fields, for OCR and Document AI training.</li>
+          <li>5 handwriting styles, realistic signatures and GAN-based handwriting synthesis, with paired ground-truth CSV annotations.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Pillow</span><span class="tag">GANs</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <time>Nov 2025</time>
+      <div>
+        <div class="role">Colour-Based Motion Drawing App</div>
+        <ul>
+          <li>Real-time OpenCV app that tracks a coloured object via HSV masking and contour detection, and turns its motion into a drawing.</li>
+        </ul>
+        <div class="tags"><span class="tag">OpenCV</span><span class="tag">Python</span></div>
+      </div>
+    </div>
+
+    <p style="margin-top:8px;font-size:14.5px;color:var(--muted)">More on <a href="https://github.com/Aadi511">GitHub →</a></p>
+  </section>
+
+  <section id="coursework">
+    <h2>ECE Projects</h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:6px">Hardware and embedded systems work spanning digital logic, analog design and microcontrollers.</p>
+
+    <div class="entry">
+      <time>2026</time>
+      <div>
+        <div class="role">8051-Based Digital Musical Instrument</div>
+        <ul>
+          <li>Timer-driven digital keyboard generating Indian classical notes (Sa–Ni) as square waves, played on a buzzer via 8051 Timer 0.</li>
+          <li>16×2 LCD interface showing the active note in real time; written in C and simulated in Proteus / Keil µVision.</li>
+        </ul>
+        <div class="tags"><span class="tag">8051</span><span class="tag">Embedded C</span><span class="tag">Proteus</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <time>2026</time>
+      <div>
+        <div class="role">Three-Band Audio Equalizer</div>
+        <ul>
+          <li>Active bass/mid/treble equalizer using LM741 op-amps — Sallen–Key low/high-pass and MFB band-pass filters, 12 dB/octave.</li>
+          <li>Simulated and built on breadboard; measured cutoffs within ±8% of design targets with no audible distortion.</li>
+        </ul>
+        <div class="tags"><span class="tag">Op-Amps</span><span class="tag">Active Filters</span><span class="tag">LTspice</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <time>2026</time>
+      <div>
+        <div class="role">Buck Converter (12V → 5V) Feeding a 555 Timer</div>
+        <ul>
+          <li>Designed and tested a DC-DC step-down converter at D = 0.45, powering a 555 Timer astable circuit from its output.</li>
+          <li>Measured ~87% efficiency with inductor ripple of 292 mA pp and output ripple of 7 mV pp.</li>
+        </ul>
+        <div class="tags"><span class="tag">Power Electronics</span><span class="tag">555 Timer</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <time>2026</time>
+      <div>
+        <div class="role">Four-Floor Lift Simulation System</div>
+        <ul>
+          <li>Simulated elevator control using D/JK flip-flops, a priority encoder, an up/down counter and a 7-segment display.</li>
+          <li>Priority-based floor selection with automatic reset once a request is served.</li>
+        </ul>
+        <div class="tags"><span class="tag">Digital Logic</span><span class="tag">Sequential Circuits</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skillgroup"><h3>Languages</h3><p>Python, SQL, C</p></div>
+      <div class="skillgroup"><h3>Data &amp; ML</h3><p>Pandas, NumPy, Scikit-learn, PyTorch, OpenCV</p></div>
+      <div class="skillgroup"><h3>AI &amp; Automation</h3><p>OpenAI API, RAG, n8n</p></div>
+      <div class="skillgroup"><h3>BI &amp; Visualization</h3><p>Power BI, SQL</p></div>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <h2>Leadership</h2>
+    <ul class="plain-list">
+      <li><b>Vice Captain, NITT Cricket Contingent</b> — lead team strategy and match preparation; team placed at Sastra'25 and Kongunadu Sports Tournament'25, and played at Spardha'25 (IIT BHU).</li>
+      <li><b>Deputy Manager, Pragyan Marketing Team</b> — run outreach campaigns and coordinate with sponsors and partners for NIT Trichy's technical festival.</li>
+      <li><b>CV Manager, DataByte</b> — manage project teams, led the club's hackathon and represented it at student induction.</li>
+    </ul>
+  </section>
+
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <ul class="plain-list">
+      <li><b>Gold Medal</b>, SOF National Science Olympiad &amp; International English Olympiad (2023, Round 1) — International Rank 462, Zonal Rank 44.</li>
+      <li><b>Distinction Certificate</b>, Rajasthan State Talent Search Examination (STSE).</li>
+      <li>District-level cricket champion (2018); represented Udaipur district at state level (2022).</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Get in touch</h2>
+    <p style="color:#C7CFD6;max-width:50ch">Open to internships and roles in data analytics and applied AI/ML — happy to talk about a project, an opportunity, or anything in between.</p>
+    <div class="contact-row">
+      <div><span class="label">Email</span><a href="mailto:aadityavijay511@gmail.com">aadityavijay511@gmail.com</a></div>
+      <div><span class="label">Phone</span><a href="tel:+917340510592">+91 73405 10592</a></div>
+      <div><span class="label">GitHub</span><a href="https://github.com/Aadi511">github.com/Aadi511</a></div>
+    </div>
+  </section>
+
+  <footer>© 2026 Aaditya Vijay</footer>
+</div>
+
+</body>
+</html>
